@@ -21,8 +21,8 @@ root.render(
       redirectUri= {redirectURL}
       audience="https://dev-uuh22p8d.us.auth0.com/api/v2/"
     >
+    <App />
     <Routes>
-      <Route path="/*" element={<App />} />
       <Route path="/members" element={<Members />} exact />
       <Route path="/profile" element={<Profile />} exact />
     </Routes>
