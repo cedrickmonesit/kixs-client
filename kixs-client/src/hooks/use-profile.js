@@ -7,12 +7,12 @@ export const useProfile = () => {
 
   useEffect(() => {
     const getUserMetadata = async () => {
-      const domain = "dev-uuh22p8d.us.auth0.com";
+      const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   
       try {
         const accessToken = await getAccessTokenSilently({
           audience: `https://${domain}/api/v2/`,
-          scope: "read:current_user",
+          scope: process.env.REACT_APP_AUTH0_USER_SCOPE,
         });
   
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;

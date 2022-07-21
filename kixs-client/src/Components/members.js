@@ -4,15 +4,16 @@ import { useApi } from '../hooks/use-api';
 const Members = () => {
 
   const opts = {
-    audience: 'https://kixs-api',
-    scope: 'read:members',
+    audience: process.env.REACT_APP_BACKEND_AUDIENCE,
+    scope: process.env.REACT_APP_USER_SCOPE,
   };
   const { login, getAccessTokenWithPopup } = useAuth0();
   const {
+    data,
     loading,
     error,
     refresh
-  } = useApi('http://localhost:4000/members', opts); // useApi hook
+  } = useApi(process.env.REACT_APP_API_URL, opts); // useApi hook
   const getTokenAndTryAgain = async () => {
     await getAccessTokenWithPopup(opts);
     refresh();
@@ -33,7 +34,7 @@ const Members = () => {
   }
   return (
     <ul>
-      <li>Success</li>
+      <li>{data.first}</li>
     </ul>
   );
 };

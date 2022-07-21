@@ -3,31 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
-import Members from "./Components/members";
-import Profile from "./Components/profile";
-
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Auth0ProviderWithRedirectCallback from './Components/Auth0ProviderWithRedirectCallback';
 
 const redirectURL = `${window.location.origin}/profile` // set redirect url must be one of the allowed callback urls in the Auth0 application settings. Redirects after logging in.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
-  // using BrowserRouter instead of Hashroute best for regular looking urls
+  /* React.Strictmode highjlights potential problems in the application will only run in development not in production. */
+  <React.StrictMode>
+  {/* using BrowserRouter instead of Hashroute best for regular looking urls */} 
   <BrowserRouter>
-    <Auth0Provider
-      domain="dev-uuh22p8d.us.auth0.com"
-      clientId="DbkPnc6u9JAzxruw9f1ehaKEyLj2Tg7J"
+    <Auth0ProviderWithRedirectCallback /* returns us to our returnURL */
+      domain={process.env.REACT_APP_AUTH0_DOMAIN}
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       redirectUri= {redirectURL}
-      audience="https://dev-uuh22p8d.us.auth0.com/api/v2/"
+      audience={process.env.REACT_APP_AUTH0_AUDIENCE}
     >
-    <App />
     <Routes>
-      <Route path="/members" element={<Members />} exact />
-      <Route path="/profile" element={<Profile />} exact />
+      <Route path="/*" element={<App />} />
     </Routes>
-    </Auth0Provider>
-  </BrowserRouter>,
+    </Auth0ProviderWithRedirectCallback>
+  </BrowserRouter>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
