@@ -13,8 +13,10 @@ export const useApi = (url, options = {}) => { // useApi function has two parame
   useEffect(() => {
     (async () => {
       try {
-        const { audience, scope, ...fetchOptions } = options; // deconstructing options object 
+        const { audience, scope, ...fetchOptions } = options; // deconstructing options object
+        // Auth0 access token with added roles and permissions set in the Auth0 dashboard for API RBAC settings
         const accessToken = await getAccessTokenSilently({ audience, scope });
+
         const res = await fetch(url, {
           ...fetchOptions,
           headers: {
