@@ -12,6 +12,9 @@ export const useHandleAccessToken = () => {
     /* scope: process.env.REACT_APP_USER_SCOPE, */
   };
   const { getAccessTokenWithPopup } = useAuth0();
+
+  // the response from the backend is stored in data
+  // data.authorized tells us if the user has the proper roles/permissions to access the route
   const {
     data,
     loading,

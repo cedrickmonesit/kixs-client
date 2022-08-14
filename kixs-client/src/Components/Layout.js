@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
-/* Layout component makes it easier for us to change designs */
+{/* Layout component makes it easier for us to change designs */}
 const Layout = () => {
     return (
         <main className="app-container">

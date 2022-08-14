@@ -1,4 +1,4 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react"; //auth0-react SDK
 import React from "react";
 
 const LoginButton = () => {
