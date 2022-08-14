@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-export const useApi = (url, options = {}) => {
+export const useApi = (url, options = {}) => { // useApi function has two parameters
   const { getAccessTokenSilently } = useAuth0();
   const [state, setState] = useState({
     error: null,
@@ -13,8 +13,10 @@ export const useApi = (url, options = {}) => {
   useEffect(() => {
     (async () => {
       try {
-        const { audience, scope, ...fetchOptions } = options;
+        const { audience, scope, ...fetchOptions } = options; // deconstructing options object
+        // Auth0 access token with added roles and permissions set in the Auth0 dashboard for API RBAC settings
         const accessToken = await getAccessTokenSilently({ audience, scope });
+        
         const res = await fetch(url, {
           ...fetchOptions,
           headers: {
