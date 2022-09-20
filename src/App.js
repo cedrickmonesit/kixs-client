@@ -1,14 +1,14 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Components/Home";
-import Admin from "./Components/Admin";
-import Profile from "./Components/Profile";
-import Register from "./Components/Register";
-import Unauthorized from "./Components/Unauthorized";
-import Favorites from "./Components/favorites/Favorites";
-import Missing from "./Components/Missing";
-import ProtectedRoute from "./Components/protected-route";
-import RoleBasedRoute from "./Components/role-based-route";
+import Home from "./components/Home";
+import Admin from "./components/Admin";
+import Profile from "./components/Profile";
+import Register from "./components/Register";
+import Unauthorized from "./components/Unauthorized";
+import Favorites from "./components/favorites/Favorites";
+import Missing from "./components/Missing";
+import ProtectedRoute from "./components/ProtectedRoute";
+import RoleBasedRoute from "./components/RoleBasedRoute";
 
 function App() {
   return (
