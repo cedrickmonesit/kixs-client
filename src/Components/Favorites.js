@@ -18,14 +18,14 @@ const Favorites = () => {
     const { data } = useApi(url, opts);
     console.log(data);
 
-    
 
-  return (
-  <div>
-    <p>
-        Favorites
-    </p>
-</div>);
+
+    return (
+        <div>
+            <p>
+                Favorites
+            </p>
+        </div>);
 };
 
 export default Favorites;
