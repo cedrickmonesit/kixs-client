@@ -1,59 +1,131 @@
-import { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
-export const useApi = (url, options = {}) => { // useApi function has two parameters
+export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
   const { getAccessTokenSilently } = useAuth0();
-  const [state, setState] = useState({
-    error: null,
-    loading: true,
-    data: null,
+
+  // response data and fetching state
+  const [data, setData] = useState({
+    response: [],
+    isFetchingData: true,
   });
-  const [refreshIndex, setRefreshIndex] = useState(0);
+
+  // update endpoint url and enable/disabe request state
+  const [requestState, setRequestState] = useState({
+    endpoint: url,
+    doRequest: fetchRequest,
+    requestType: method,
+    body: requestBody,
+  });
+
+  const [refresh, setRefresh] = useState(false);
+
+  let { endpoint, doRequest, requestType, body } = requestState;
+  const requestApi = async () => {
+    //console.log(`${requestType}: ${endpoint}`);
+
+    // invoke endpoint if it is a function
+    let endpointUrl = typeof endpoint === "function" ? endpoint() : endpoint;
+
+    try {
+      const audience = process.env.REACT_APP_BACKEND_AUDIENCE;
+      const accessToken = await getAccessTokenSilently({ audience });
+      let headers,
+        request,
+        response = {};
+      switch (requestType) {
+        case "GET":
+          headers = new Headers({
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          });
+
+          request = new Request(endpointUrl, {
+            audience: audience,
+            method: "GET",
+            headers: headers,
+            mode: "cors",
+            credentials: "same-origin", // include, *same-origin, omit
+          });
+
+          response = await fetch(request)
+            .then((data) => {
+              return data.json();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          //set data state as response
+          setData({ response: response, isFetchingData: false });
+
+          break;
+        case "DELETE":
+          //(`Deleting: ${body.id}`);
+          headers = new Headers({
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          });
+
+          request = new Request(endpointUrl, {
+            audience: audience,
+            method: "DELETE",
+            headers: headers,
+            mode: "cors",
+            credentials: "same-origin", // include, *same-origin, omit
+            body: JSON.stringify(body), // body data type must match "Content-Type" header
+          });
+          // Default options are marked with *
+          response = await fetch(request)
+            .then((data) => {
+              return data.json();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          // console.log(response);
+          //set data state as response
+          setData({ response: response, isFetchingData: false });
+
+          break;
+        default:
+          console.log("Unsupported request type");
+          return false;
+      }
+    } catch (e) {
+      console.error(e);
+      setData({ ...data, isError: true });
+    }
+  };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { audience, scope, method, headers } = options; // deconstructing options object
-        // Auth0 access token with added roles and permissions set in the Auth0 dashboard for API RBAC settings
-        const accessToken = await getAccessTokenSilently({ audience, scope });
-        const fetchOptions = {
-          audience: audience,
-          method: method,
-          headers: {
-            ...headers,
-            // Add the Authorization header to the existing headers
-            Authorization: `Bearer ${accessToken}`,
-          },
-
-        };
-
-        // check if body property exists in options
-        if(options.hasOwnProperty('body')) {
-          // add body property with options.body as value
-          fetchOptions['body'] = options.body
-        }
-        console.log(fetchOptions);
-
-        
-        const res = await fetch(url, fetchOptions);
-        setState({
-          ...state,
-          data: await res.json(),
-          error: null,
-          loading: false,
-        });
-      } catch (error) {
-        setState({
-          ...state,
-          error,
-          loading: false,
-        });
-      }
-    })();
-  }, [refreshIndex]);
+    if (doRequest) {
+      requestApi();
+    }
+  }, [requestState, refresh]); // Retry request when requestState object changes
 
   return {
-    ...state,
-    refresh: () => setRefreshIndex(refreshIndex + 1),
+    data,
+
+    // send closure setRequestState to update endpoint url or doRequest state from component
+    setRequestState: ({
+      url = "",
+      fetchRequest = false,
+      method = "",
+      requestBody = {},
+    }) => {
+      setRequestState({
+        endpoint: url,
+        doRequest: true,
+        requestType: method,
+        body: requestBody,
+      });
+    },
+    setRefresh: (refresh = false) => {
+      setRefresh(refresh);
+    },
   };
 };
