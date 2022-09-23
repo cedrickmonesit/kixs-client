@@ -1,0 +1,64 @@
+@import "../../assets/variables";
+
+.nav {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  min-height: 75px;
+  top: 0;
+  background-color: $white;
+  border-bottom: 3px solid $secondary-color;
+  .icon {
+    color: $secondary-color;
+    font-size: 32px;
+    margin: 0 15px;
+
+    &.icon-profile {
+      font-size: 30px;
+    }
+
+    &.icon-home {
+      font-size: 35px;
+    }
+  }
+
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 75px;
+
+    .logout-btn,
+    .login-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      margin: 0;
+      padding: 0;
+      width: 62px;
+      height: 36px;
+    }
+
+    .main-nav__logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .main-nav__logo {
+        width: 45px;
+        margin-left: 15px;
+      }
+    }
+
+    .main-nav__login-logout-container {
+      min-width: 62px;
+      min-height: 36px;
+    }
+
+    .main-nav__links {
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+    }
+  }
+}
