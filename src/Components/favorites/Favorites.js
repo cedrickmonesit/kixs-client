@@ -17,7 +17,7 @@ const Favorites = () => {
 
   if (!data.isFetchingData) {
     return (
-      <div className="favorites">
+      <div className="main favorites">
         <h1 className="title favorites__title">Favorites</h1>
         <div className="favorites__container">{renderFavorites()}</div>
       </div>

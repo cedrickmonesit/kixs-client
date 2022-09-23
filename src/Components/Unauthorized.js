@@ -1,7 +1,7 @@
 const Unauthorized = () => {
   return (
-    <div>
-      <h1 className="title favorites__title">Unauthorized</h1>
+    <div className="main">
+      <h1 className="title">Unauthorized</h1>
     </div>
   );
 };

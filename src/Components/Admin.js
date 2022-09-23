@@ -3,7 +3,7 @@ import { useHandleAccessToken } from "../hooks/useHandleAccessToken";
 
 const Admin = (props) => {
   return (
-    <div>
+    <div className="main">
       <p>admin</p>
     </div>
   );
