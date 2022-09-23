@@ -1,9 +1,9 @@
 const Unauthorized = () => {
-    return (
-        <div>
-            <p>Unauthorized</p>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1 className="title favorites__title">Unauthorized</h1>
+    </div>
+  );
+};
 
 export default Unauthorized;

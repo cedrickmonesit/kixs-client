@@ -6,7 +6,12 @@ const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <button className="login-btn" onClick={() => loginWithRedirect()}>
+    <button
+      className="login-btn"
+      onClick={() => {
+        loginWithRedirect();
+      }}
+    >
       <RiLoginCircleFill className="icon" />
     </button>
   );
