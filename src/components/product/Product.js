@@ -5,6 +5,8 @@ const Product = () => {
 
   return (
     <div>
+      <h1 className="title favorites__title">Product</h1>
+
       <p>{id}</p>
     </div>
   );

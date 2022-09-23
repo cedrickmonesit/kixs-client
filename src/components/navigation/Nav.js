@@ -30,9 +30,11 @@ const MainNav = () => {
           <FaHeart className="icon animate__animated animate__bounceIn" />
         </NavLink>
         <div className="main-nav__login-logout-container">
-          {isAuthenticated && !isLoading && <Logout />}
+          {JSON.parse(localStorage.getItem("isLoggedIn")) && <Logout />}
           {/* Shows after login */}
-          {!isAuthenticated && !isLoading && <Login />}
+          {!JSON.parse(localStorage.getItem("isLoggedIn")) && !isLoading && (
+            <Login />
+          )}
           {/* Shows before login where login button is */}
         </div>
       </div>

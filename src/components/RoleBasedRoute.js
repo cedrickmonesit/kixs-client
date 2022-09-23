@@ -4,6 +4,7 @@ import { useHandleAccessToken } from "../hooks/useHandleAccessToken";
 import Unauthorized from "./Unauthorized";
 
 const RoleBasedRoute = ({ component, ...args }) => {
+  localStorage.setItem("isLoggedIn", JSON.stringify(false));
   const Component = withAuthenticationRequired(
     component,
     args,
@@ -43,9 +44,12 @@ const RoleBasedRoute = ({ component, ...args }) => {
   //if the user has the proper role/permissions it will mount the component passed through the role-based-route component
   // data.authorized tells us if the user has the proper roles/permissions to access the route
   if (data.authorized) {
+    localStorage.setItem("isLoggedIn", JSON.stringify(true));
     // return component to mount
     return <Component />;
   } else {
+    localStorage.setItem("isLoggedIn", JSON.stringify(false));
+
     //user is not authorized to access this route
     return <Unauthorized error={error.message} />;
   }

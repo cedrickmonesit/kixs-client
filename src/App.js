@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Admin from "./components/Admin";
 import Profile from "./components/Profile";
-import Register from "./components/Register";
 import Unauthorized from "./components/Unauthorized";
 import Favorites from "./components/favorites/Favorites";
 import Missing from "./components/Missing";
@@ -21,7 +20,6 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/product/:id" element={<Product />} />
 
