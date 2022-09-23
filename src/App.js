@@ -10,7 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import RoleBasedRoute from "./components/RoleBasedRoute";
 import Product from "./components/product/Product";
 import NavBar from "./components/navigation/Nav";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 import "animate.css";
 
 function App() {

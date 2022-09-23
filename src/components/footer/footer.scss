@@ -1,0 +1,107 @@
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  background: #131517;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  padding-bottom: 0.2rem;
+  font-family: "Baloo Chettan 2";
+  font-size: 1rem;
+
+  a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+.main-footer-nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 1rem;
+}
+
+.main-footer-item {
+  margin: 2rem 0;
+
+  a {
+    margin-left: 1.5rem;
+  }
+}
+
+.main-footer-top-copyright {
+  line-height: 1.5;
+  .main-footer-copyright-name {
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 0.3rem;
+  }
+}
+
+.main-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+
+  .main-footer-bottom-logo {
+    padding: 0.5rem;
+    a {
+      display: inline-block;
+    }
+
+    .main-footer-kixs-api-logo {
+      width: 6rem;
+    }
+  }
+
+  .main-footer-bottom-social-icons {
+    display: flex;
+    align-items: center;
+    .main-footer-social-icon {
+      font-size: 2rem;
+      margin-left: 0.5rem;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+@media (min-width: 650px) {
+  .main-footer {
+    padding: 10% 15%;
+    font-size: 1.5;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .main-footer-top {
+      text-align: left;
+    }
+
+    .main-footer-bottom {
+      flex-direction: column;
+
+      .main-footer-bottom-logo {
+        .main-footer-kixs-api-logo {
+          width: 12rem;
+          max-width: 100%;
+          height: auto;
+        }
+      }
+      .main-footer-bottom-social-icons {
+        .main-footer-social-icon {
+          margin-left: 1rem;
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
