@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Auth0ProviderWithRedirectCallback from "./components/Auth0ProviderWithRedirectCallback";
 
-const redirectURL = `${window.location.origin}/profile`; // set redirect url must be one of the allowed callback urls in the Auth0 application settings. Redirects after logging in.
+const redirectURL = `${window.location.origin}`; // set redirect url must be one of the allowed callback urls in the Auth0 application settings. Redirects after logging in.
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   /* React.Strictmode highjlights potential problems in the application will only run in development not in production. */

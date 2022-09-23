@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./favorites.scss";
-import { useApi } from "../../hooks/use-api";
+import { useApi } from "../../hooks/useApi";
+import List from "../list/List";
 
 const Favorites = () => {
-  // resource url the endpoint
-  const url = process.env.REACT_APP_API_URL_FAVORITES;
-
-  // options for fetch method
-  const opts = {
-    audience: process.env.REACT_APP_BACKEND_AUDIENCE,
+  const { data } = useApi({
+    url: process.env.REACT_APP_API_URL_FAVORITES,
+    fetchRequest: true,
     method: "GET",
-    audience: process.env.REACT_APP_BACKEND_AUDIENCE,
-    headers: {
-      contentType: "'Content-Type:' 'application/json'",
-    },
-  };
-  const { data } = useApi(url, opts);
-  console.log(data);
+    requestBody: {},
+  });
 
-  return (
-    <div>
-      <p>Favorites</p>
-    </div>
-  );
+  const renderFavorites = () => {
+    return <List items={data.response.products} isDeletable={true} />;
+  };
+
+  if (!data.isFetchingData) {
+    return (
+      <div className="favorites">
+        <h1 className="title favorites__title">Favorites</h1>
+        <div className="favorites__container">{renderFavorites()}</div>
+      </div>
+    );
+  } else {
+    return <div>Loading...</div>;
+  }
 };
 
 export default Favorites;

@@ -1,0 +1,32 @@
+.list-container {
+  .list-container__list {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      350px
+    ); //auto fill will leave empty cells
+    grid-template-rows: repeat(
+      auto-fit,
+      400px
+    ); //auto fit will center cells and will share empty cells to center
+    grid-gap: 25px;
+    justify-content: center;
+
+    .list-container__list__item {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      min-height: 400px;
+    }
+    @media (min-width: 500px) {
+      .list-container__list__item {
+        min-height: 200px;
+      }
+      grid-template-columns: repeat(auto-fit, 200px);
+      grid-template-rows: repeat(auto-fit, 250px);
+    }
+  }
+}

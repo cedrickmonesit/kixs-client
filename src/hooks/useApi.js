@@ -61,6 +61,66 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
           setData({ response: response, isFetchingData: false });
 
           break;
+        case "POST":
+          //(`Deleting: ${body.id}`);
+          headers = new Headers({
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          });
+
+          request = new Request(endpointUrl, {
+            audience: audience,
+            method: "POST",
+            headers: headers,
+            mode: "cors",
+            credentials: "same-origin", // include, *same-origin, omit
+            body: JSON.stringify(body), // body data type must match "Content-Type" header
+          });
+          // Default options are marked with *
+          response = await fetch(request)
+            .then((data) => {
+              return data.json();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          // console.log(response);
+          //set data state as response
+          setData({ response: response, isFetchingData: false });
+
+          break;
+        case "PUT":
+          //(`Deleting: ${body.id}`);
+          headers = new Headers({
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          });
+
+          request = new Request(endpointUrl, {
+            audience: audience,
+            method: "PUT",
+            headers: headers,
+            mode: "cors",
+            credentials: "same-origin", // include, *same-origin, omit
+            body: JSON.stringify(body), // body data type must match "Content-Type" header
+          });
+          // Default options are marked with *
+          response = await fetch(request)
+            .then((data) => {
+              return data.json();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          // console.log(response);
+          //set data state as response
+          setData({ response: response, isFetchingData: false });
+
+          break;
         case "DELETE":
           //(`Deleting: ${body.id}`);
           headers = new Headers({
@@ -91,6 +151,7 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
           setData({ response: response, isFetchingData: false });
 
           break;
+
         default:
           console.log("Unsupported request type");
           return false;
