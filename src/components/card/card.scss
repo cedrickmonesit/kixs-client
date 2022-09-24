@@ -5,9 +5,8 @@
 
 .card {
   position: relative;
-  height: 100%;
-  border: solid 2px $secondary-color;
-  color: $secondary-color;
+  border: solid 2px $black;
+  color: $font-color;
   background-color: $white;
   opacity: 1;
   border-radius: 8px;
@@ -15,6 +14,9 @@
   transition: all 0.3s ease-in-out;
   padding: 10px;
   text-align: left;
+  margin: 0 auto;
+  width: 200px;
+  min-height: 250px;
 
   .card__link {
     display: flex;
@@ -57,7 +59,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    color: $secondary-color;
+    color: $font-color;
     z-index: 3;
 
     .card__icon-delete-button {
@@ -76,6 +78,5 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     opacity: 1;
-    border-color: $active-color;
   }
 }

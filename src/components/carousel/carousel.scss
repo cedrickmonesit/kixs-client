@@ -1,1 +1,11 @@
 @import "../../assets/variables";
+
+.carousel__container {
+  background-color: $gray;
+  div.slick-slider div.slick-track,
+  div.slick-slider div.slick-list {
+    display: flex;
+    align-items: center;
+    min-height: 300px;
+  }
+}
