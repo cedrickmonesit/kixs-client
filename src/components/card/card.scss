@@ -4,8 +4,10 @@
 }
 
 .card {
+  display: flex;
+  align-items: center;
   position: relative;
-  border: solid 2px $black;
+  border: solid 1px $black;
   color: $font-color;
   background-color: $white;
   opacity: 1;
@@ -17,6 +19,7 @@
   margin: 0 auto;
   width: 200px;
   min-height: 250px;
+  height: 100%;
 
   .card__link {
     display: flex;
@@ -29,7 +32,7 @@
 
     .card-body {
       padding: 0 10px;
-      font-size: 20px;
+      font-size: 16px;
       margin-top: 20px;
       min-width: 175px;
 
@@ -41,6 +44,7 @@
 
       .card-body__title-secondary-name {
         margin: 0;
+
         margin-top: 3px;
       }
 
@@ -48,6 +52,10 @@
         margin-top: 10px;
         margin-bottom: 10px;
       }
+    }
+
+    &:hover + .card__buttons {
+      opacity: 1;
     }
   }
 
@@ -78,5 +86,51 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     opacity: 1;
+  }
+
+  .card__buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
+
+    .card__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
+      background-color: $black;
+      border: 1px solid $black;
+      border-right: none;
+      padding: 0;
+      margin: 0;
+      -webkit-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        background-color: $white;
+
+        .icon-eye,
+        .icon-heart {
+          color: $black;
+        }
+      }
+
+      .icon-eye,
+      .icon-heart {
+        color: $white;
+        font-size: 20px;
+        margin: 0;
+      }
+    }
   }
 }

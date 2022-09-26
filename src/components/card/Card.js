@@ -1,10 +1,18 @@
 import "./card.scss";
 import { useNavigate, Link } from "react-router-dom";
 import { TiDelete } from "react-icons/ti";
+import { FaEye, FaHeart } from "react-icons/fa";
 import { useState } from "react";
 import { useApi } from "../../hooks/useApi";
 
-const Card = ({ item, name, isDeletable }) => {
+const Card = ({
+  item,
+  name,
+  isDeletable,
+  showContent = true,
+  showSecondaryName = false,
+  showButtons = true,
+}) => {
   const [response, setResponse] = useState(false);
   const { data, setRequestState } = useApi({ url: "", fetchRequest: false });
 
@@ -41,6 +49,41 @@ const Card = ({ item, name, isDeletable }) => {
     }
   };
 
+  const renderCardContent = (item) => {
+    if (showContent) {
+      return (
+        <div className="card-body">
+          <p className="card-body__title card-body__title-primary-name">{`${item.primaryName}`}</p>
+          <p className="card-body__title card-body__title-secondary-name">{`${item.secondaryName}`}</p>
+          <p className="card-body__msrp">{`$${item.msrp}`}</p>
+        </div>
+      );
+    }
+
+    if (showSecondaryName && !showContent) {
+      return (
+        <div className="card-body">
+          <p className="card-body__title card-body__title-secondary-name">{`${item.secondaryName}`}</p>
+        </div>
+      );
+    }
+  };
+
+  const renderButtons = () => {
+    if (showButtons) {
+      return (
+        <div className="card__buttons">
+          <button className="card__button">
+            <FaEye className="icon icon-eye" />
+          </button>
+          <button className="card__button">
+            <FaHeart className="icon icon-heart" />
+          </button>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="card">
       <Link
@@ -54,12 +97,9 @@ const Card = ({ item, name, isDeletable }) => {
           src={item.images[0]}
           alt={`${item.primaryName} ${item.secondaryName} `}
         />
-        <div className="card-body">
-          <p className="card-body__title card-body__title-primary-name">{`${item.primaryName}`}</p>
-          <p className="card-body__title card-body__title-secondary-name">{`${item.secondaryName}`}</p>
-          <p className="card-body__msrp">{`$${item.msrp}`}</p>
-        </div>
+        {renderCardContent(item)}
       </Link>
+      {renderButtons()}
     </div>
   );
 };

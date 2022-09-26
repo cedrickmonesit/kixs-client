@@ -8,4 +8,32 @@
     align-items: center;
     min-height: 300px;
   }
+
+  .slick-prev,
+  .slick-next {
+    width: 30px;
+    height: 30px;
+    z-index: 3;
+    opacity: 0.5;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      font-size: 30px;
+      color: $black;
+    }
+
+    &:hover {
+      opacity: 1;
+      scale: 1.1;
+    }
+  }
+
+  .slick-prev {
+    left: 10px;
+  }
+
+  .slick-next {
+    right: 10px;
+  }
 }

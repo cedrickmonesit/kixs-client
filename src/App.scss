@@ -24,14 +24,9 @@
   }
 
   .icon {
-    color: $secondary-color;
     font-size: 32px;
     margin: 0 15px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-
-    &:hover {
-      color: $active-color;
-    }
   }
 }

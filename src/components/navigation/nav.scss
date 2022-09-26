@@ -6,10 +6,10 @@
   width: 100vw;
   min-height: 75px;
   top: 0;
-  background-color: $white;
-  border-bottom: 3px solid $secondary-color;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid $primary-color;
   .icon {
-    color: $secondary-color;
+    color: $primary-color;
     font-size: 32px;
     margin: 0 15px;
 

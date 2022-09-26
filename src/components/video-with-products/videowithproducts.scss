@@ -1,0 +1,21 @@
+@import "../../assets/variables";
+
+.video-with-products {
+  .video-with-products__container {
+    display: flex;
+    justify-content: flex-start;
+    max-height: 625px;
+    width: 100vw;
+    .video-with-products__video {
+      max-height: inherit;
+      video {
+        max-height: inherit;
+      }
+    }
+    .video-with-products__products {
+      flex-grow: 1; // flex grow will fill the remaining width of the flexbox
+      min-width: 0px; //min-width: 0px; a bug in Chrome implementing W3C spec wrongly
+      background-color: $gray;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../card/Card";
 import "./carousel.scss";
 
@@ -8,7 +8,7 @@ const Carousel = ({ items }) => {
     if (products) {
       const settings = {
         dots: true,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 6,

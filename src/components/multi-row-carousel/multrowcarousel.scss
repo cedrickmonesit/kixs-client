@@ -1,0 +1,22 @@
+.video-with-products {
+  margin-bottom: 100px;
+
+  .carousel {
+    .carousel__container {
+      .card {
+        width: 275px;
+        margin: 40px auto;
+        justify-content: center;
+
+        .card__image {
+          max-width: 225px;
+        }
+
+        .card-body {
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
