@@ -1,18 +1,11 @@
 import "./list.scss";
 import Card from "../card/Card";
 
-const List = ({ items, isDeletable }) => {
+const List = ({ items, isDeletable, showButtons }) => {
   const cards = items.map((item, index) => {
     return (
-      <li
-        className={`list-container__list__item ${item.id}-${index}`}
-        key={`${item.name}-${index}`}
-      >
-        <Card
-          item={item}
-          name={`${item.id}-${index}`}
-          isDeletable={isDeletable}
-        />
+      <li id={`${item.id}-${index}`} className={`list-container__list__item`} key={`${item.name}-${index}`}>
+        <Card item={item} name={`${item.id}-${index}`} showButtons={showButtons} isDeletable={isDeletable} />
       </li>
     );
   });
