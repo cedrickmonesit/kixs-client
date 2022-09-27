@@ -34,7 +34,7 @@ const MultiRowCarousel = ({ items, showContent }) => {
             },
           },
           {
-            breakpoint: 850,
+            breakpoint: 980,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1,

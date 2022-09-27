@@ -28,6 +28,7 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
     try {
       const audience = process.env.REACT_APP_BACKEND_AUDIENCE;
       const accessToken = isAuthenticated && (await getAccessTokenSilently({ audience }));
+      console.log(accessToken);
       const header = {
         Accept: "application/json",
         "Content-Type": "application/json",

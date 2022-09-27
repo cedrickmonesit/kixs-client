@@ -1,0 +1,40 @@
+@import "../../assets/variables";
+
+.hero-video {
+  position: relative;
+  width: 100vw;
+  height: 50vh;
+  min-height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative; /* or absolute or fixed */
+
+  .hero-video__overlay {
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-video__kixs-logo {
+    width: 400px;
+    position: absolute;
+    left: 50%; /* % of surrounding element */
+    top: 50%;
+    transform: translate(-50%, -50%); /* % of current element */
+    z-index: 99;
+
+    @media screen and (max-width: 760px) {
+      width: 225px;
+    }
+  }
+
+  video {
+    position: absolute;
+    left: 50%; /* % of surrounding element */
+    top: 60%;
+    transform: translate(-50%, -30%); /* % of current element */
+  }
+}

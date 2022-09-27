@@ -1,13 +1,14 @@
+import "./carousel.scss";
 import Slider from "react-slick";
 import React from "react";
 import Card from "../card/Card";
-import "./carousel.scss";
+import Modal from "../modal/modal";
 
-const Carousel = ({ items }) => {
+const Carousel = ({ items, title }) => {
   const renderSlider = (products) => {
     if (products) {
       const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 6,
@@ -16,7 +17,7 @@ const Carousel = ({ items }) => {
         swipeToSlide: true,
         responsive: [
           {
-            breakpoint: 1150,
+            breakpoint: 1300,
             settings: {
               slidesToShow: 5,
               slidesToScroll: 5,
@@ -25,7 +26,7 @@ const Carousel = ({ items }) => {
             },
           },
           {
-            breakpoint: 980,
+            breakpoint: 1150,
             settings: {
               slidesToShow: 4,
               slidesToScroll: 4,
@@ -47,29 +48,36 @@ const Carousel = ({ items }) => {
           },
         ],
       };
-
-      console.log(products);
-
       const cards = products.map((product, index) => {
-        return (
-          <Card
-            key={`${product.primaryName}-${index}`}
-            item={product}
-            name={`${product.primaryName}-${index}`}
-          />
-        );
+        return <Card key={`${product.primaryName}-${index}`} item={product} name={`${product.primaryName}-${index}`} />;
       });
 
       return <Slider {...settings}>{cards}</Slider>;
     }
   };
 
+  const renderModals = (products) => {
+    if (products) {
+      const modals = products.map((product, index) => {
+        return <Modal key={`${product.showSecondaryName}-${index}`} item={product} />;
+      });
+
+      return modals;
+    }
+  };
+
   return (
-    <div className="carousel">
-      <div className="carousel__container">
-        {renderSlider(items.response.products)}
+    <React.Fragment>
+      <div className="carousel__title-container">
+        <p className="carousel__title">{title}</p>
       </div>
-    </div>
+      <div className="carousel">
+        <div className="carousel__container">
+          {renderModals(items.response.products)}
+          {renderSlider(items.response.products)}
+        </div>
+      </div>
+    </React.Fragment>
   );
 };
 
