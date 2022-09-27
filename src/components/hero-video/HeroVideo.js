@@ -6,6 +6,7 @@ import kixsLogo from "../../assets/images/kixs-hero-logo.png";
 const HeroVideo = () => {
   return (
     <div className="hero-video">
+      <div className="hero-video__overlay"></div>
       <img className="hero-video__kixs-logo" src={kixsLogo} alt="kixs logo" />
       <Video url={url} />
     </div>

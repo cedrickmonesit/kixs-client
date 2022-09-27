@@ -8,6 +8,7 @@
 }
 
 .hero-video {
+  position: relative;
   width: 100vw;
   height: 50vh;
   min-height: 100%;
@@ -15,6 +16,14 @@
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative; /* or absolute or fixed */
+
+  .hero-video__overlay {
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 
   .hero-video__kixs-logo {
     width: 400px;
