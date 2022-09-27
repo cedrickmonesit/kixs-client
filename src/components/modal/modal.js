@@ -17,7 +17,7 @@ const Modal = ({ item }) => {
         </button>
         <div className="modal-container">
           <div className="modal-image__container">
-            <img className="modal-image" src={item.images[1]} alt={`${item.primaryName} ${item.secondaryName} image`} />
+            <img className="modal-image" src={item.images[2]} alt={`${item.primaryName} ${item.secondaryName} image`} />
           </div>
           <div className="modal-content__container">
             <p className="modal-content__title">{item.primaryName}</p>

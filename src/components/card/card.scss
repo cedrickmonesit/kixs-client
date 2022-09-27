@@ -5,7 +5,8 @@
 
 .card {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
   position: relative;
   border: solid 1px $black;
   color: $font-color;
@@ -24,10 +25,10 @@
   .card__link {
     display: flex;
     align-items: center;
-    color: inherit;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
-    height: inherit;
+    color: inherit;
+    height: 235px;
     text-decoration: none;
 
     .card-body {
@@ -72,6 +73,7 @@
     top: 0;
     color: $font-color;
     z-index: 3;
+    cursor: pointer;
 
     .card__icon-delete-button {
       width: 30px;
