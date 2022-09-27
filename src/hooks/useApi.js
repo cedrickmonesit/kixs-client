@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   // response data and fetching state
   const [data, setData] = useState({
@@ -22,24 +22,25 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
 
   let { endpoint, doRequest, requestType, body } = requestState;
   const requestApi = async () => {
-    //console.log(`${requestType}: ${endpoint}`);
-
     // invoke endpoint if it is a function
     let endpointUrl = typeof endpoint === "function" ? endpoint() : endpoint;
 
     try {
       const audience = process.env.REACT_APP_BACKEND_AUDIENCE;
-      const accessToken = await getAccessTokenSilently({ audience });
+      const accessToken = isAuthenticated && (await getAccessTokenSilently({ audience }));
+      const header = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        ...(isAuthenticated && { Authorization: `Bearer ${accessToken}` }),
+      };
+      console.log(header);
+
       let headers,
         request,
-        response = {};
+        response = { header };
       switch (requestType) {
         case "GET":
-          headers = new Headers({
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          });
+          headers = new Headers(header);
 
           request = new Request(endpointUrl, {
             audience: audience,
@@ -63,11 +64,7 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
           break;
         case "POST":
           //(`Deleting: ${body.id}`);
-          headers = new Headers({
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          });
+          headers = new Headers(header);
 
           request = new Request(endpointUrl, {
             audience: audience,
@@ -93,11 +90,7 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
           break;
         case "PUT":
           //(`Deleting: ${body.id}`);
-          headers = new Headers({
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          });
+          headers = new Headers(header);
 
           request = new Request(endpointUrl, {
             audience: audience,
@@ -123,11 +116,7 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
           break;
         case "DELETE":
           //(`Deleting: ${body.id}`);
-          headers = new Headers({
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          });
+          headers = new Headers(header);
 
           request = new Request(endpointUrl, {
             audience: audience,
@@ -172,12 +161,7 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
     data,
 
     // send closure setRequestState to update endpoint url or doRequest state from component
-    setRequestState: ({
-      url = "",
-      fetchRequest = false,
-      method = "",
-      requestBody = {},
-    }) => {
+    setRequestState: ({ url = "", fetchRequest = false, method = "", requestBody = {} }) => {
       setRequestState({
         endpoint: url,
         doRequest: true,

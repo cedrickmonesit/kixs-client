@@ -1,10 +1,11 @@
 import "./nav.scss";
+import React from "react";
 import Login from "../Login";
 import Logout from "../Logout";
 import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { FaUserAlt, FaHeart } from "react-icons/fa";
-import logo from "../../assets/images/logo.png";
+import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { useAuth0 } from "@auth0/auth0-react";
 import Searchbar from "../searchbar/Searchbar";
 
@@ -14,7 +15,7 @@ const MainNav = () => {
   return (
     <div className="main-nav">
       <div className="main-nav__logo-container">
-        <img className="main-nav__logo" src={logo} alt="Kixs Logo" />
+        <Logo />
       </div>
       <div className="main-nav__search-bar-container">
         <Searchbar />

@@ -12,7 +12,7 @@ const Favorites = () => {
   });
 
   const renderFavorites = () => {
-    return <List items={data.response.products} isDeletable={true} />;
+    return <List items={data.response.products} showButtons={false} isDeletable={true} />;
   };
 
   if (!data.isFetchingData) {
