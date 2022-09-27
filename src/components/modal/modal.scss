@@ -1,0 +1,99 @@
+@import "../../assets/variables";
+
+.modal {
+  position: fixed;
+  width: 60%;
+  height: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  border: 1px solid $black;
+  padding: 40px;
+  z-index: 101;
+
+  .modal-delete-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $active-color;
+    }
+    .modal__delete-icon {
+    }
+  }
+
+  .modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .modal-image__container {
+      .modal-image {
+        max-width: 400px;
+      }
+    }
+  }
+
+  .modal-content__container {
+    text-align: left;
+    padding: 0 10px;
+
+    p {
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .modal-content__title {
+      font-size: 25px;
+    }
+
+    .modal-content__subtitle {
+      margin-top: 5px;
+
+      font-size: 20px;
+    }
+
+    .modal-content__msrp {
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    .modal-content__text {
+      font-size: 16px;
+      overflow-y: scroll;
+      height: 200px;
+      font-family: "Manrope", sans-serif;
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}

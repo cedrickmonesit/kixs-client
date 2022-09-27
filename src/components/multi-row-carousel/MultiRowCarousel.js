@@ -3,6 +3,7 @@ import React from "react";
 import Card from "../card/Card";
 import "../carousel/carousel.scss";
 import "./multrowcarousel.scss";
+import Modal from "../modal/modal";
 
 const MultiRowCarousel = ({ items, showContent }) => {
   const renderSlider = (products) => {
@@ -53,23 +54,27 @@ const MultiRowCarousel = ({ items, showContent }) => {
 
       const cards = products.map((product, index) => {
         return (
-          <Card
-            key={`${product.primaryName}-${index}`}
-            item={product}
-            name={`${product.primaryName}-${index}`}
-            showContent={false}
-            showSecondaryName={true}
-          />
+          <Card key={`${product.primaryName}-${index}`} item={product} name={`${product.primaryName}-${index}`} showContent={false} showSecondaryName={true} />
         );
       });
-
       return <Slider {...settings}>{cards}</Slider>;
+    }
+  };
+
+  const renderModals = (products) => {
+    if (products) {
+      const modals = products.map((product, index) => {
+        return <Modal key={`${product.showSecondaryName}-${index}`} item={product} />;
+      });
+
+      return modals;
     }
   };
 
   return (
     <div className="carousel">
       <div className="carousel__container">
+        {renderModals(items.response.products)}
         {renderSlider(items.response.products)}
       </div>
     </div>

@@ -2,53 +2,48 @@ import "./card.scss";
 import { useNavigate, Link } from "react-router-dom";
 import { TiDelete } from "react-icons/ti";
 import { FaEye, FaHeart } from "react-icons/fa";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useApi } from "../../hooks/useApi";
 
-const Card = ({
-  item,
-  name,
-  isDeletable,
-  showContent = true,
-  showSecondaryName = false,
-  showButtons = true,
-}) => {
+const Card = ({ item, name, isDeletable, showContent = true, showSecondaryName = false, showButtons = true }) => {
   const [response, setResponse] = useState(false);
-  const { data, setRequestState } = useApi({ url: "", fetchRequest: false });
+  const deleteFavorite = useApi({ url: null, fetchRequest: false });
 
   const navigate = useNavigate();
 
   const handleDeleteEvent = (event) => {
-    event.preventDefault();
-    const target = event.target.tagName;
-    console.log(target);
-
-    if (target === "path" || target === "svg") {
-      setRequestState({
-        url: process.env.REACT_APP_API_URL_REMOVE_PRODUCT_FAVORITES,
-        fetchRequest: true,
-        method: "DELETE",
-        requestBody: { id: item.id },
-      });
-      console.log(name);
-      if (name) {
-        document.querySelector(`.${name}`).classList.add("hide");
-      }
-    } else {
-      navigate(`/product/${item.id}`);
+    deleteFavorite.setRequestState({
+      url: process.env.REACT_APP_API_URL_REMOVE_PRODUCT_FAVORITES,
+      fetchRequest: true,
+      method: "DELETE",
+      requestBody: { id: item.id },
+    });
+    if (name) {
+      document.getElementById(`${name}`).classList.add("hide");
     }
   };
 
   const renderDeleteButton = () => {
     if (isDeletable) {
       return (
-        <div className="card__icon-delete-container">
+        <button className="card__icon-delete-container" onClick={(event) => handleDeleteEvent(event)}>
           <TiDelete className="card__icon-delete-button" />
-        </div>
+        </button>
       );
     }
   };
 
+  const addFavorite = useApi({ url: null, fetchRequest: false });
+
+  const handleAddEvent = (event, item) => {
+    document.querySelector(`.icon-heart-${item.id}`).style.color = "#d2001a";
+    addFavorite.setRequestState({
+      url: process.env.REACT_APP_API_URL_ADD_PRODUCT_FAVORITES,
+      fetchRequest: true,
+      method: "POST",
+      requestBody: { id: item.id },
+    });
+  };
   const renderCardContent = (item) => {
     if (showContent) {
       return (
@@ -69,15 +64,20 @@ const Card = ({
     }
   };
 
-  const renderButtons = () => {
+  const handleShowModal = (event, item) => {
+    document.querySelector(`.modal-${item.id}`).classList.remove("hide");
+    document.querySelector(`.modal-overlay-${item.id}`).classList.remove("hide");
+  };
+
+  const renderButtons = (item) => {
     if (showButtons) {
       return (
         <div className="card__buttons">
-          <button className="card__button">
+          <button className={`card__button card__button-${item.id}`} onClick={(event) => handleShowModal(event, item)}>
             <FaEye className="icon icon-eye" />
           </button>
-          <button className="card__button">
-            <FaHeart className="icon icon-heart" />
+          <button className="card__button" onClick={(event) => handleAddEvent(event, item)}>
+            <FaHeart className={`icon icon-heart icon-heart-${item.id}`} />
           </button>
         </div>
       );
@@ -86,20 +86,12 @@ const Card = ({
 
   return (
     <div className="card">
-      <Link
-        className="card__link"
-        onClick={(event) => handleDeleteEvent(event)}
-        to={`/product/${item.id}`}
-      >
-        {renderDeleteButton()}
-        <img
-          className="card__image"
-          src={item.images[0]}
-          alt={`${item.primaryName} ${item.secondaryName} `}
-        />
+      {renderDeleteButton()}
+      <Link className="card__link" to={`/product/${item.id}`}>
+        <img className="card__image" src={item.images[0]} alt={`${item.primaryName} ${item.secondaryName} `} />
         {renderCardContent(item)}
       </Link>
-      {renderButtons()}
+      {renderButtons(item)}
     </div>
   );
 };

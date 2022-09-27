@@ -65,6 +65,9 @@
 
   .card__icon-delete-container {
     position: absolute;
+    background: transparent;
+    padding: 0;
+    border: none;
     right: 0;
     top: 0;
     color: $font-color;
