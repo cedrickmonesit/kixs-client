@@ -1,15 +1,27 @@
 @import "../../assets/variables";
 
 .video-with-products {
+  margin-bottom: 50px;
+
   .video-with-products__container {
     display: flex;
     justify-content: flex-start;
+
     max-height: 665px;
     width: 100vw;
+
+    @media screen and (max-width: 760px) {
+      flex-direction: column;
+      max-height: none;
+    }
     .video-with-products__video {
       max-height: inherit;
+
       video {
         max-height: inherit;
+      }
+      @media screen and (max-width: 760px) {
+        max-height: 655px;
       }
     }
     .video-with-products__products {
@@ -26,5 +38,9 @@
     margin: 0;
     padding: 25px;
     text-align: left;
+
+    @media screen and (max-width: 760px) {
+      text-align: center;
+    }
   }
 }

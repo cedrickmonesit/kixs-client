@@ -17,7 +17,7 @@ const Carousel = ({ items, title }) => {
         swipeToSlide: true,
         responsive: [
           {
-            breakpoint: 1150,
+            breakpoint: 1300,
             settings: {
               slidesToShow: 5,
               slidesToScroll: 5,
@@ -26,7 +26,7 @@ const Carousel = ({ items, title }) => {
             },
           },
           {
-            breakpoint: 980,
+            breakpoint: 1150,
             settings: {
               slidesToShow: 4,
               slidesToScroll: 4,

@@ -18,6 +18,12 @@ const Home = () => {
     method: "GET",
   });
 
+  const jordan3 = useApi({
+    url: process.env.REACT_APP_API_URL_GET_PRODUCTS_JORDAN_3,
+    fetchRequest: true,
+    method: "GET",
+  });
+
   const jordan4 = useApi({
     url: process.env.REACT_APP_API_URL_GET_PRODUCTS_JORDAN_4,
     fetchRequest: true,
@@ -34,6 +40,7 @@ const Home = () => {
     <div className="main home">
       <HeroVideo />
       <VideoWithProducts url={videoUrl} items={jordan1.data} title={"Jordan 1 Retro"} />
+      <Carousel items={jordan3.data} title={"Jordan 3 Retro"} />
       <Carousel items={jordan4.data} title={"Jordan 4 Retro"} />
       <Carousel items={jordan11.data} title={"Jordan 11 Retro"} />
     </div>

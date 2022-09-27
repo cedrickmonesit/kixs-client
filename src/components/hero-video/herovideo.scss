@@ -1,12 +1,5 @@
 @import "../../assets/variables";
 
-.app {
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-}
-
 .hero-video {
   position: relative;
   width: 100vw;
@@ -31,7 +24,11 @@
     left: 50%; /* % of surrounding element */
     top: 50%;
     transform: translate(-50%, -50%); /* % of current element */
-    z-index: 101;
+    z-index: 99;
+
+    @media screen and (max-width: 760px) {
+      width: 225px;
+    }
   }
 
   video {

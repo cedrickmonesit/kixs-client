@@ -17,15 +17,9 @@ const MainNav = () => {
       <div className="main-nav__logo-container">
         <Logo />
       </div>
-      <div className="main-nav__search-bar-container">
-        <Searchbar />
-      </div>
       <div className="main-nav__links">
         <NavLink to="/">
           <AiFillHome className="icon icon-home animate__animated animate__bounceIn" />
-        </NavLink>
-        <NavLink to="/profile">
-          <FaUserAlt className="icon icon-profile animate__animated animate__bounceIn" />
         </NavLink>
         <NavLink to="/favorites">
           <FaHeart className="icon animate__animated animate__bounceIn" />
@@ -33,9 +27,7 @@ const MainNav = () => {
         <div className="main-nav__login-logout-container">
           {JSON.parse(localStorage.getItem("isLoggedIn")) && <Logout />}
           {/* Shows after login */}
-          {!JSON.parse(localStorage.getItem("isLoggedIn")) && !isLoading && (
-            <Login />
-          )}
+          {!JSON.parse(localStorage.getItem("isLoggedIn")) && !isLoading && <Login />}
           {/* Shows before login where login button is */}
         </div>
       </div>

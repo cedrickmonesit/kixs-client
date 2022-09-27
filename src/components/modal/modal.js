@@ -27,7 +27,7 @@ const Modal = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className={`modal-overlay modal-overlay-${item.id} hide`}></div>
+      <div className={`modal-overlay modal-overlay-${item.id} hide`} onClick={(event) => handleHideModal(event)}></div>
     </React.Fragment>
   );
 };
