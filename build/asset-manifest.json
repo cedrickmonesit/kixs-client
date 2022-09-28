@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/kixs-client/static/css/main.40380dc5.css",
+    "main.js": "/kixs-client/static/js/main.6b7c6caf.js",
+    "static/js/787.ca76c8c6.chunk.js": "/kixs-client/static/js/787.ca76c8c6.chunk.js",
+    "static/media/kixs-video-wall.mp4": "/kixs-client/static/media/kixs-video-wall.4225169a1cc61d5bee80.mp4",
+    "static/media/jordan1-chicago.mp4": "/kixs-client/static/media/jordan1-chicago.e2549fe21254c27821c0.mp4",
+    "static/media/kixs-api-logo-alt.png": "/kixs-client/static/media/kixs-api-logo-alt.f77b3a981df3a2fa5682.png",
+    "static/media/logo.svg": "/kixs-client/static/media/logo.9424e8048bc692604efb3199607e9383.svg",
+    "static/media/slick.svg": "/kixs-client/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/kixs-client/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/kixs-client/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/kixs-client/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/kixs-client/index.html",
+    "main.40380dc5.css.map": "/kixs-client/static/css/main.40380dc5.css.map",
+    "main.6b7c6caf.js.map": "/kixs-client/static/js/main.6b7c6caf.js.map",
+    "787.ca76c8c6.chunk.js.map": "/kixs-client/static/js/787.ca76c8c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40380dc5.css",
+    "static/js/main.6b7c6caf.js"
+  ]
+}

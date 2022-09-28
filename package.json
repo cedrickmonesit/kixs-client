@@ -1,6 +1,7 @@
 {
   "name": "kixs-client",
   "version": "0.1.0",
+  "homepage": "https://cedrickmonesit.github.io/kixs-client",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
@@ -21,6 +22,8 @@
     "wowjs": "^1.1.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
