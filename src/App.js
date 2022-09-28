@@ -21,17 +21,10 @@ function App() {
         {/* public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
-        <Route path="/product/:id" element={<Product />} />
 
         {/* protected routes */}
-        <Route
-          path="/profile"
-          element={<ProtectedRoute component={Profile} />}
-        />
-        <Route
-          path="/favorites"
-          element={<ProtectedRoute component={Favorites} />}
-        />
+        <Route path="/profile" element={<ProtectedRoute component={Profile} />} />
+        <Route path="/favorites" element={<ProtectedRoute component={Favorites} />} />
         {/* ProtectedRoute takes the component that will be rendered once authentication is done also secures the route until authenticaiton */}
 
         {/* role based routes */}

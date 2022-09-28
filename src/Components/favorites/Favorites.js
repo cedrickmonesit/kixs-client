@@ -11,6 +11,8 @@ const Favorites = () => {
     requestBody: {},
   });
 
+  console.log(data);
+
   const renderFavorites = () => {
     return <List items={data.response.products} showButtons={false} isDeletable={true} />;
   };

@@ -87,10 +87,10 @@ const Card = ({ item, name, isDeletable, showContent = true, showSecondaryName =
   return (
     <div className="card">
       {renderDeleteButton()}
-      <Link className="card__link" to={`/product/${item.id}`}>
+      <div className="card__link">
         <img className="card__image" src={item.images[0]} alt={`${item.primaryName} ${item.secondaryName} `} />
         {renderCardContent(item)}
-      </Link>
+      </div>
       {renderButtons(item)}
     </div>
   );
