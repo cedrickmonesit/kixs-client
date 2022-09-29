@@ -47,6 +47,7 @@ Enjoy!
 ## Built With
 
 - [React](https://reactjs.org/) - JavaScript framework
+- [Router](https://reactrouter.com/en/main) - Enables "client side routing"
 - [SASS](https://sass-lang.com/) - CSS Pre-Processor
 - [Auth0](https://auth0.com/docs/libraries/auth0-react) - JavaScript library for implementing authentication and authorization in React apps.
 - [Kixs API](https://github.com/cedrickmonesit/kixs-server) - My backend Node Express server that authenticates users and queries the Firestore database.
