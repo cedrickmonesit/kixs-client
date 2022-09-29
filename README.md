@@ -49,9 +49,13 @@ Enjoy!
 - [React](https://reactjs.org/) - JavaScript framework
 - [SASS](https://sass-lang.com/) - CSS Pre-Processor
 - [Auth0](https://auth0.com/docs/libraries/auth0-react) - JavaScript library for implementing authentication and authorization in React apps.
-- [Kixs API](https://www.themoviedb.org/) - My backend Node Express server that authenticates users and queries the Firestore database.
+- [Kixs API](https://github.com/cedrickmonesit/kixs-server) - My backend Node Express server that authenticates users and queries the Firestore database.
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - JavaScript interface for fetching resources
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Language
+
+## Deployment
+
+- Github Pages
 
 ## Contributors
 
