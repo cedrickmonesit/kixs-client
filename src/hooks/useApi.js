@@ -21,24 +21,22 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
   const [refresh, setRefresh] = useState(false);
 
   let { endpoint, doRequest, requestType, body } = requestState;
+
   const requestApi = async () => {
     // invoke endpoint if it is a function
     let endpointUrl = typeof endpoint === "function" ? endpoint() : endpoint;
-
+    console.log(requestType);
     try {
       const audience = process.env.REACT_APP_BACKEND_AUDIENCE;
-      const accessToken = isAuthenticated && (await getAccessTokenSilently({ audience }));
-      console.log(accessToken);
+      const accessToken = await getAccessTokenSilently({ audience });
       const header = {
         Accept: "application/json",
         "Content-Type": "application/json",
-        ...(isAuthenticated && { Authorization: `Bearer ${accessToken}` }),
+        Origin: "http://localhost:3000",
+        Authorization: `Bearer ${accessToken}`,
       };
-      console.log(header);
 
-      let headers,
-        request,
-        response = { header };
+      let headers, request, response;
       switch (requestType) {
         case "GET":
           headers = new Headers(header);
@@ -67,16 +65,16 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
           //(`Deleting: ${body.id}`);
           headers = new Headers(header);
 
-          request = new Request(endpointUrl, {
+          request = {
             audience: audience,
             method: "POST",
-            headers: headers,
+            headers: header,
             mode: "cors",
-            credentials: "same-origin", // include, *same-origin, omit
             body: JSON.stringify(body), // body data type must match "Content-Type" header
-          });
+          };
+          console.log(body);
           // Default options are marked with *
-          response = await fetch(request)
+          response = await fetch(endpointUrl, request)
             .then((data) => {
               return data.json();
             })
@@ -84,7 +82,6 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
               console.log(error);
             });
 
-          // console.log(response);
           //set data state as response
           setData({ response: response, isFetchingData: false });
 
@@ -110,7 +107,6 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
               console.log(error);
             });
 
-          // console.log(response);
           //set data state as response
           setData({ response: response, isFetchingData: false });
 
@@ -136,7 +132,6 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
               console.log(error);
             });
 
-          // console.log(response);
           //set data state as response
           setData({ response: response, isFetchingData: false });
 

@@ -8,8 +8,9 @@ const LoginButton = () => {
   return (
     <button
       className="login-btn"
-      onClick={() => {
-        loginWithRedirect();
+      onClick={async () => {
+        let userState = await loginWithRedirect({ redirect: "http://localhost:3000/profile" });
+        console.log(userState);
       }}
     >
       <RiLoginCircleFill className="icon" />

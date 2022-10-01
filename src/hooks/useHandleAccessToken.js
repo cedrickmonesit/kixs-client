@@ -17,11 +17,7 @@ export const useHandleAccessToken = () => {
 
   // the response from the backend is stored in data
   // data.authorized tells us if the user has the proper roles/permissions to access the route
-  const { data, loading, error, refresh } = useApi(
-    process.env.REACT_APP_API_URL,
-    opts,
-  ); // useApi hook
-  console.log(data);
+  const { data, loading, error, refresh } = useApi(process.env.REACT_APP_API_URL, opts); // useApi hook
 
   //Unlike getTokenSilently used in the use-api.js hook file getAccessTokenWithPopup() let's us retrieve an access token will work in browsers where third-party cookies are blocked by default.
   const getTokenAndTryAgain = async () => {

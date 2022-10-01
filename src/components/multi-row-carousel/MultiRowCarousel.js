@@ -50,8 +50,6 @@ const MultiRowCarousel = ({ items, showContent }) => {
         ],
       };
 
-      console.log(products);
-
       const cards = products.map((product, index) => {
         return (
           <Card key={`${product.primaryName}-${index}`} item={product} name={`${product.primaryName}-${index}`} showContent={false} showSecondaryName={true} />
