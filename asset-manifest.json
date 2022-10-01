@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kixs-client/static/css/main.3028e973.css",
-    "main.js": "/kixs-client/static/js/main.3e13c202.js",
+    "main.js": "/kixs-client/static/js/main.67d46077.js",
     "static/js/787.ca76c8c6.chunk.js": "/kixs-client/static/js/787.ca76c8c6.chunk.js",
     "static/media/kixs-video-wall.mp4": "/kixs-client/static/media/kixs-video-wall.4225169a1cc61d5bee80.mp4",
     "static/media/jordan1-chicago.mp4": "/kixs-client/static/media/jordan1-chicago.e2549fe21254c27821c0.mp4",
@@ -13,11 +13,11 @@
     "static/media/slick.woff": "/kixs-client/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/kixs-client/index.html",
     "main.3028e973.css.map": "/kixs-client/static/css/main.3028e973.css.map",
-    "main.3e13c202.js.map": "/kixs-client/static/js/main.3e13c202.js.map",
+    "main.67d46077.js.map": "/kixs-client/static/js/main.67d46077.js.map",
     "787.ca76c8c6.chunk.js.map": "/kixs-client/static/js/787.ca76c8c6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3028e973.css",
-    "static/js/main.3e13c202.js"
+    "static/js/main.67d46077.js"
   ]
 }
