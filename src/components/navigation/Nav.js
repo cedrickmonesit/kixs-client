@@ -11,7 +11,7 @@ import Searchbar from "../searchbar/Searchbar";
 
 const MainNav = () => {
   const { isAuthenticated, isLoading } = useAuth0();
-
+  console.log();
   return (
     <div className="main-nav">
       <div className="main-nav__logo-container">

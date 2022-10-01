@@ -9,7 +9,7 @@ const LogoutButton = () => {
     <button
       className="logout-btn"
       onClick={() => {
-        localStorage.setItem("isLoggedIn", JSON.stringify(false));
+        localStorage.setItem("isLoggedIn", JSON.parse(false));
         logout({ returnTo: "http://localhost:3000/" });
       }}
     >

@@ -2,7 +2,7 @@ import { useProfile } from "../hooks/useProfile";
 
 const Profile = () => {
   const { sub } = useProfile();
-  localStorage.setItem("isLoggedIn", JSON.stringify(true));
+  localStorage.setItem("isLoggedIn", true);
   return (
     <div className="main">
       <h1 className="title favorites__title">Profile</h1>

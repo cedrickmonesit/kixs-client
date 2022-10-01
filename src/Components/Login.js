@@ -9,8 +9,8 @@ const LoginButton = () => {
     <button
       className="login-btn"
       onClick={async () => {
-        let userState = await loginWithRedirect({ redirect: "http://localhost:3000/profile" });
-        console.log(userState);
+        localStorage.setItem("isLoggedIn", JSON.parse(true));
+        loginWithRedirect({ redirect: "http://localhost:3000/profile" });
       }}
     >
       <RiLoginCircleFill className="icon" />

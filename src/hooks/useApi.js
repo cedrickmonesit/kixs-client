@@ -28,12 +28,13 @@ export const useApi = ({ url, fetchRequest = true, method, requestBody }) => {
     console.log(requestType);
     try {
       const audience = process.env.REACT_APP_BACKEND_AUDIENCE;
-      const accessToken = await getAccessTokenSilently({ audience });
+      const accessToken = isAuthenticated && (await getAccessTokenSilently({ audience }));
+      isAuthenticated && localStorage.setItem("accessToken", accessToken);
       const header = {
         Accept: "application/json",
         "Content-Type": "application/json",
         Origin: "http://localhost:3000",
-        Authorization: `Bearer ${accessToken}`,
+        ...(isAuthenticated && { Authorization: `Bearer ${localStorage.getItem("accessToken")}` }),
       };
 
       let headers, request, response;
