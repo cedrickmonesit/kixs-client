@@ -9,8 +9,8 @@ const LogoutButton = () => {
     <button
       className="logout-btn"
       onClick={() => {
-        localStorage.setItem("isLoggedIn", JSON.stringify(false));
-        logout({ returnTo: window.location.origin });
+        localStorage.setItem("isLoggedIn", JSON.parse(false));
+        logout({ returnTo: "http://localhost:3000/" });
       }}
     >
       <RiLogoutCircleFill className="icon" />

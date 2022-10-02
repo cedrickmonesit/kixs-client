@@ -8,8 +8,9 @@ const LoginButton = () => {
   return (
     <button
       className="login-btn"
-      onClick={() => {
-        loginWithRedirect();
+      onClick={async () => {
+        localStorage.setItem("isLoggedIn", JSON.parse(true));
+        loginWithRedirect({ redirect: "http://localhost:3000/profile" });
       }}
     >
       <RiLoginCircleFill className="icon" />

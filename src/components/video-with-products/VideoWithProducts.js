@@ -3,7 +3,6 @@ import Video from "../video/video";
 import MultiRowCarousel from "../multi-row-carousel/MultiRowCarousel";
 
 const VideoWithProducts = ({ url, items, title }) => {
-  console.log(items);
   return (
     <section>
       <div className="video-with-products__title-container">
